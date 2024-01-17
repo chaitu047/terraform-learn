@@ -4,15 +4,17 @@ resource "aws_security_group" "allow_tls" {
   vpc_id      = data.aws_vpc.selected.id
 
   ingress = {
-    cidr_ipv4   = ["0.0.0.0/0"]
+    cidr_blocks = ["0.0.0.0/0"]
     from_port   = 443
-    ip_protocol = "tcp"
+    protocol    = "tcp"
     to_port     = 443
   }
 
   egress = {
-    cidr_ipv4   = "0.0.0.0/0"
-    ip_protocol = "-1"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   tags = {
