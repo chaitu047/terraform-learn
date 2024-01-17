@@ -1,5 +1,6 @@
 resource "aws_s3_bucket" "example" {
-  bucket = "my-tf-test-bucket-7896"
+  count  = 3
+  bucket = "${var.bucketname}-789-${count.index}"
 
   tags = {
     Name        = "My bucket"
