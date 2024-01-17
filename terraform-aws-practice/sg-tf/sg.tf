@@ -1,7 +1,7 @@
 resource "aws_security_group" "allow_tls" {
   name        = "allow_tls"
   description = "Allow TLS inbound traffic and all outbound traffic"
-  vpc_id      = aws_vpc.selected.id
+  vpc_id      = data.aws_vpc.selected.id
 
   ingress = {
     cidr_ipv4   = ["0.0.0.0/0"]
